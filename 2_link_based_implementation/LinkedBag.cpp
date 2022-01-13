@@ -1,4 +1,5 @@
 #include "LinkedBag.h"
+#include <string>
 
 template<class ItemType>
 LinkedBag<ItemType>::LinkedBag() : headPtr(nullptr), itemCount(0)
@@ -27,7 +28,7 @@ template<class ItemType>
 vector<ItemType> LinkedBag<ItemType>::toVector() const
 {
     vector<ItemType> items;
-    Node<ItemType> currentPtr = headPtr;
+    Node<ItemType>* currentPtr = headPtr;
     while(currentPtr != nullptr)
     {
         items.push_back(currentPtr->getItem());
@@ -132,11 +133,12 @@ LinkedBag<ItemType>::~LinkedBag()
     clear();
 }
 
+
 template<class ItemType>
 LinkedBag<ItemType>::LinkedBag(const LinkedBag<ItemType>& aBag)
 {
-    itemCount = aBag->getCurrentSize();
-    Node<ItemType>* currentPtr = aBag->headPtr;
+    itemCount = aBag.getCurrentSize();
+    Node<ItemType>* currentPtr = aBag.headPtr;
 
     if(currentPtr == nullptr)
         headPtr = nullptr;
@@ -168,3 +170,6 @@ LinkedBag<ItemType>::LinkedBag(const LinkedBag<ItemType>& aBag)
         newChainPtr->setNext(nullptr);
     }
 }
+
+
+template class LinkedBag<std::string>;

@@ -1,4 +1,5 @@
 #include "Node.h"
+#include <string>
 
 template<class ItemType>
 Node<ItemType>::Node() :next(nullptr)
@@ -38,3 +39,5 @@ Node<ItemType>* Node<ItemType>::getNext() const
 {
     return next;
 }
+
+template class Node<std::string>;
